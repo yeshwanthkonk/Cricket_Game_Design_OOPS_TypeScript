@@ -142,12 +142,13 @@ class GameUI{
             this.Team_1_Hit.disabled = false;
             this.currentPlayer = 0;
             this.intervalTrack = setInterval(()=>{
-                if(--this.Timer_time == 58){
+                if(--this.Timer_time == 0){
                     clearInterval(this.intervalTrack);
                     this.Team_1_Hit.disabled = true;
                     this.currentTurn = this.Team_2.name;
-                    this.start();
                     this.Timer_time = 60;
+                    this.start();
+                    
                 }
                 this.Timer.innerText = String(this.Timer_time);
             }, 1000);
@@ -158,7 +159,7 @@ class GameUI{
             this.Team_2_Hit.disabled = false;
             this.currentPlayer = 0;
             this.intervalTrack = setInterval(()=>{
-                if(--this.Timer_time == 58){
+                if(--this.Timer_time == 0){
                     clearInterval(this.intervalTrack);
                     this.Team_2_Hit.disabled = true;
                     this.ResultGenerate.disabled = false;
@@ -226,6 +227,7 @@ ui.start();
         clearInterval(ui.intervalTrack);
         ui.Team_1_Hit.disabled = true;
         ui.currentTurn = ui.Team_2.name;
+        ui.Timer_time = 60;
         ui.start();
     }
 });
